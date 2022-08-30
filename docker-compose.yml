@@ -1,0 +1,31 @@
+version: '3'
+services:
+  species:
+    image: worthrd/species-db
+    ports:
+      - "5432:5432"
+    networks:
+      - db_nw
+    environment:
+      - POSTGRES_PASSWORD=342516
+      - POSTGRES_USER=recep
+      - POSTGRES_DB=species
+  species-api:
+    image: worthrd/species-api
+    ports:
+      - "5000:5000"
+    networks:
+      - db_nw
+    depends_on:
+      - species
+  species-monday:
+    image: worthrd/monday-species:3
+    ports:
+      - "8302:8302"
+    networks:
+      - db_nw
+    depends_on:
+      - species-api
+networks:
+  db_nw:
+    driver: bridge
