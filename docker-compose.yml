@@ -1,7 +1,7 @@
 version: '3'
 services:
   species:
-    image: worthrd/species-db
+    image: worthrd/species-db:2
     ports:
       - "5432:5432"
     networks:
