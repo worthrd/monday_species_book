@@ -14,7 +14,8 @@ const searchSpecies = async (value) => {
     };
     const params = new url.URLSearchParams(queryParams);
     console.log(params);
-    const resProm = await axios.get(`http://46.101.229.249:5000/search?${params}`);
+    //const resProm = await axios.get(`http://46.101.229.249:5000/search?${params}`);
+    const resProm = await axios.get(`http://127.0.0.1:5000/search?${params}`);
     const response = await resProm.data;
 
     console.log("species api response:" + JSON.stringify(response));
@@ -37,7 +38,8 @@ const searchSpecies = async (value) => {
 const saveFinding = async (approvedSpecies) => {
   try {
   
-    const response = await axios.post("http://46.101.229.249:5000/record_species",approvedSpecies);
+    //const response = await axios.post("http://46.101.229.249:5000/record_species",approvedSpecies);
+    const response = await axios.post("http://127.0.0.1:5000/record_species",approvedSpecies);
 
     console.log("save findings result:", response.data);
     
@@ -56,7 +58,8 @@ const getRecordedSpecies = async (value) => {
     };
     const params = new url.URLSearchParams(queryParams);
     console.log(params);
-    const resProm = await axios.get(`http://46.101.229.249:5000/get_findings?${params}`);
+    //const resProm = await axios.get(`http://46.101.229.249:5000/get_findings?${params}`);
+    const resProm = await axios.get(`http://127.0.0.1:5000/get_findings?${params}`);
     const response = await resProm.data;
 
     console.log("species get findings api response:" + JSON.stringify(response));
